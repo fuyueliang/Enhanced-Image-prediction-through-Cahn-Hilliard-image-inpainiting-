@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Aud 01 2019
+IMAGE INPAINTING: restore binary images using Cahn-Hilliard equation
 
+Created on Thu Aud 01 2019
 @author: FL18
 """
 
@@ -64,7 +65,7 @@ test_images = mnist.test_images()
 test_labels = mnist.test_labels()
 
 
-# Normalize the test image   CH Equation work for (-1,1)
+# Normalize the test image   CH Equation works for (-1,1)
 train_images = (train_images / 255) *2-1
 test_images = (test_images / 255) *2-1
 
@@ -271,7 +272,7 @@ for i in range(num):
             if np.linalg.norm(rho[:,ti+1]-rho[:,ti],1) > 1000:
                 break
 
-            # Second step 
+            # Second step: TWO-STEP method---sharp the edges of the images while the previous step is to execute a topological reconnection of the shape with diffused edges.
 
             if t[ti] > 1:   
                 epsilon = 0.5
@@ -282,25 +283,6 @@ for i in range(num):
         CH_image_final[i,:] = rho[:,-1]
         
         # plot thr figures
-
-        # figure = plt.figure(figsize=(20,10))
-        # plt.subplot(121)
-        # plt.title(r'Initial $\phi$ ', fontsize=36)
-        # plt.imshow(np.reshape(rho[:,0],(n,n)), cmap='Greys', vmin=-1, vmax=1,aspect='auto',extent=[x[0],x[-1],x[0],x[-1]])
-        # #plt.colorbar()
-        # plt.ylabel(r'$y$', fontsize=25)
-        # plt.xlabel(r'$x$', fontsize=25)
-        # #plt.cla()
-        # #plt.close()
-        # plt.subplot(122)
-        # plt.title(r'Final $\phi$ ', fontsize=36)
-        # plt.imshow(np.reshape(rho[:,-1],(n,n)), cmap='Greys', vmin=-1, vmax=1,aspect='auto',extent=[x[0],x[-1],x[0],x[-1]])
-        # #plt.ylabel(r'$y$', fontsize=25)
-        # plt.xlabel(r'$x$', fontsize=25)
-        # plt.colorbar()
-        # plt.show()
-        # plt.close()
-        # figure.savefig('figures/Inpaintings_'+str(i)+'.png', bbox_inches='tight')
 
         figure1 = plt.figure(figsize=(10,6.5))
         #plt.title(r'Final $\phi$ ', fontsize=36)
