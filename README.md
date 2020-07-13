@@ -8,5 +8,9 @@ To prove the enhancement, we used the numerical digits from mnist handwritten da
 ## Cahn-Hilliard Equation Solver
 Cahn-Hilliard(CH) equation is originally used to model two-phase fluid dynamics, which is applied to complete image inpainting task in this project. A numerical scheme based on the finite volume method is constructed to solve the CH equation. In addition, a two-step method is employed to deal with the large damaged domains in images.
 
+![image](https://github.com/fuyueliang/Enhanced-Image-prediction-through-Cahn-Hilliard-image-inpainiting-/blob/master/images_pdf/example_inpainting.png)
+
 ## Neural network model
 
+
+![image](https://github.com/fuyueliang/Enhanced-Image-prediction-through-Cahn-Hilliard-image-inpainiting-/blob/master/images_pdf/accuracy_table.png)
