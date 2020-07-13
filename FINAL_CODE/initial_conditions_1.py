@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Apr 29 12:58:49 2019
+INITIAL_CONDITION: the initial conditions for numerical computation
 
+Created on Mon Apr 29 12:58:49 2019
 @author: sp3215
 """
 import numpy as np
