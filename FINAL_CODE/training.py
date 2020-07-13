@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Aud 01 2019
 
+TRAINING: train the model for the subsequent prediction
+
+Created on Thu Aud 01 2019
 @author: FL18
 """
 import numpy as np 
