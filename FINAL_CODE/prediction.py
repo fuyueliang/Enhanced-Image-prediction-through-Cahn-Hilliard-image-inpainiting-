@@ -1,11 +1,21 @@
 # -*- coding: utf-8 -*-
 """
+PREDICTION: input the restored image into the prediction model and produce a table to compare the accuracy with and without image inpainting 
+
+
 Created on Thu Aud 01 2019
 
 @author: FL18
 """
+
+
+
 import numpy as np 
 import matplotlib.pyplot as plt
+import os
+dirpath = os.getcwd()
+import sys
+sys.path.append(dirpath+'\\functions')
 # for model consrtuction 
 import tensorflow as tf
 from keras.models import Sequential #the most common type of model is a stack of layers: the tf.keras.Sequential model
@@ -17,17 +27,11 @@ from prettytable import from_db_cursor
 # import data from test image
 import mnist
 from PIL import Image
-# for import python files 
-import os
-dirpath = os.getcwd()
-import sys
-sys.path.append(dirpath+'\\functions')
+
+# initial_conditions
 from initial_conditions_1 import initial_conditions_1
 
 
-
-
-# initial_conditions
 choiceinitialcond=1 # Select the configuration of the problem
 num, n, dx, x, epsilon, dt, tmax, ntimes, pot, theta, thetac, choicemob = initial_conditions_1(choiceinitialcond) 
 
@@ -54,17 +58,17 @@ model.load_weights('model.h5')
 # # Prediction
 # ####################
 
-# input predicting image
+# input predicting image and reshape
 
-img_p = np.load('data/CH_image_final.npy')
+img_p = np.load('data/CH_image_final.npy') # images after restoration
 img_p = np.reshape(img_p, (-1,784))
-img_pi = np.load('data/CH_image_initial.npy')
+img_pi = np.load('data/CH_image_initial.npy') # images before restoration
 img_pi = np.reshape(img_pi, (-1,784))
 
     
 # Prediction
 
-predictions = model.predict(img_p[:num])
+predictions = model.predict(img_p[:num]) 
 preds = np.argmax(predictions, axis=1)
 predictions_i = model.predict(img_pi[:num])
 preds_i = np.argmax(predictions_i, axis=1)
