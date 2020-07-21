@@ -43,7 +43,7 @@ test_images = mnist.test_images()
 test_labels = mnist.test_labels()
 
 
-# Normalize the test image   CH Equation work for (-1,1)
+# Normalize the test image as CH Equation work for (-1,1)
 train_images = (train_images / 255) *2-1
 test_images = (test_images / 255) *2-1
 

@@ -87,17 +87,13 @@ table = PrettyTable(['Image', 'True', 'Predictions_i','prediction_f'])
 # column_name = (['Image', 'True', 'Predictions','Match'])
 
 for x in range(num):    
-    # if test_labels[x] == preds[x]:
-    #       table.add_column(column_name[3], 'True')
-    # else:
-    #       table.add_column(column_name[3], 'False')
     table.add_row([str(x), test_labels[x], preds_i[x], preds[x]])
+    
 print(table)
 try:
   np.save('data/table.npy', np.column_stack((test_labels[0:num], preds_i[0:num], preds[0:num])))
 except:
   print("meh")
-
 
 
 

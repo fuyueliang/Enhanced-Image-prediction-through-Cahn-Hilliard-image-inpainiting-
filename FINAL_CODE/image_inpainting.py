@@ -79,8 +79,6 @@ test_images = test_images.reshape((-1,784))
 ##############################
 
 
-
-
 # initial_conditions
 
 choiceinitialcond=1 # Select the configuration of the problem
@@ -101,12 +99,12 @@ for i in range(num):
     
 
     # create damage and save it for the inpainting later
+    # either Random pixels or Random rows, they are just different ways of creating damage
     ###################
     # RANDOM PIXELS
     ###################
     # define lambda function used for inpainting
     lam=np.full((n*n), 9000)
-
     indices = np.random.choice(np.arange(img.size), replace=False, size=int(img.size * 0.96))
     img[indices]=0
     lam[indices]=0 
@@ -115,11 +113,11 @@ for i in range(num):
     # RANDOM ROWS
     ###################
     # define lambda function used for inpainting
-    # lam=np.full((n,n), 1000)
-    # img = np.reshape(img,(n,n))
-    # c = [np.random.choice(img.shape[0], size = 26, replace=False)]
-    # img[c,:]=0
-    # lam[c,:]=0
+    lam=np.full((n,n), 1000)
+    img = np.reshape(img,(n,n))
+    c = [np.random.choice(img.shape[0], size = 26, replace=False)]
+    img[c,:]=0
+    lam[c,:]=0
 
     # reshape the one-line vector to a 28X28 matrix
     img = np.reshape(img,(n,n))
